@@ -620,7 +620,7 @@ static int bcm2835_i2s_prepare(struct snd_pcm_substream *substream,
 	uint32_t cs_reg;
 
 	snd_pcm_hw_constraint_minmax(substream->runtime,
-		SNDRV_PCM_HW_PARAM_PERIOD_BYTES, 256,
+		SNDRV_PCM_HW_PARAM_PERIOD_BYTES, 64,
 					~0);
 
 	/*
@@ -706,7 +706,7 @@ static int bcm2835_i2s_startup(struct snd_pcm_substream *substream,
 
 	snd_pcm_hw_constraint_minmax(substream->runtime,
 				     SNDRV_PCM_HW_PARAM_PERIOD_BYTES,
-				     256, ~0);
+				     64, ~0);
 
 	/* Enable PCM block */
 	regmap_update_bits(dev->i2s_regmap, BCM2835_I2S_CS_A_REG,
